@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "129602016913",
+    "project_id": "circle-management-37c35",
+    "storage_bucket": "circle-management-37c35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129602016913:android:0218adac46531ce4099130",
+        "android_client_info": {
+          "package_name": "com.example.circle_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129602016913-5ev6n1ecl80c4h57q0vr2kngu0fnhlp0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmb7gNMZoNW--NIuLFrjnY7bQJq09YOJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129602016913-5ev6n1ecl80c4h57q0vr2kngu0fnhlp0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
