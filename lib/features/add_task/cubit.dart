@@ -5,22 +5,27 @@ class AddTaskCubit extends Cubit<AddTaskState> {
 
   static AddTaskCubit of(context) => BlocProvider.of(context);
 
-  String categoryTask = 'Choose a Category';
+  String taskCategory = 'Choose a Category';
   late String taskTitle;
   late String taskDescription;
-  late String deadLineDate;
+  TextEditingController dedLineDate =
+      TextEditingController(text: 'pick a date');
   final formKey = GlobalKey<FormState>();
   late Timestamp deadLineDateTimeStamp;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  void getDeadLineDate(String? value) {
-    deadLineDate = value!;
+  void gePickedDate(DateTime? value) {
+    deadLineDateTimeStamp =
+        Timestamp.fromMicrosecondsSinceEpoch(value!.microsecondsSinceEpoch);
+
+    dedLineDate.text = '${value.day}/ ${value.month}/ ${value.year}';
+
     emit(AddTaskInit());
   }
 
   void getCategoryTask(String? value) {
-    categoryTask = value!;
+    taskCategory = value!;
     emit(AddTaskInit());
   }
 
@@ -32,13 +37,15 @@ class AddTaskCubit extends Cubit<AddTaskState> {
     try {
       final User? _user = _auth.currentUser;
       final _uId = _user!.uid;
+      final taskId = Uuid().v4();
 
       final _taskData = {
-        'taskId': 'taskId',
+        'taskId': taskId,
         'taskUpLoadedBy': _uId,
+        'taskCategory': taskCategory,
         'taskTitle': taskTitle,
         'taskDescription': taskDescription,
-        'deadLineDate': deadLineDate,
+        'deadLineDate': dedLineDate.text,
         'deadLineDateTimeStamp': deadLineDateTimeStamp,
         'taskComment': [],
         'isTaskDone': false,
@@ -47,8 +54,13 @@ class AddTaskCubit extends Cubit<AddTaskState> {
 
       await FirebaseFirestore.instance
           .collection('tasks')
-          .doc(_uId)
+          .doc(taskId)
           .set(_taskData);
+      showSnackBar('Task Uploaded Successfully');
+
+      formKey.currentState!.reset();
+      dedLineDate.clear();
+      taskCategory = 'Choose a Category';
     } catch (e) {
       showSnackBar(e.toString());
     }

@@ -1,28 +1,37 @@
 part of '../view.dart';
 
-class _TaskDateData extends StatelessWidget {
+class _TaskDateUnit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _DateRow(
-          titleDate: 'Uploaded Date  :',
-          dateText: '22/10/2020',
-        ),
-        SizedBox(height: 15),
-        _DateRow(
-          titleDate: 'Expired Date  :',
-          dateText: '22/10/2020',
-        ),
-        Center(
-          heightFactor: 1.8,
-          child: Text(
-            'expired',
-            style: style3.copyWith(color: kGreenClr),
-          ),
-        ),
-      ],
+    final cubit = TaskDetailCubit.of(context);
+    return BlocBuilder(
+      bloc: cubit,
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _DateRow(
+              titleDate: 'Uploaded Date  :',
+              dateText: cubit.upLoadedDate,
+            ),
+            SizedBox(height: 15),
+            _DateRow(
+              titleDate: 'Expired Date  :',
+              dateText: cubit.deadLineDate,
+            ),
+            SizedBox(height: 25),
+            Center(
+              child: Text(
+                cubit.isDeadLineDateAvailable
+                    ? 'don\'t worry you have time'
+                    : 'sorry this is the end',
+                style: style3.copyWith(
+                    color: cubit.isDeadLineDateAvailable ? kGreenClr : kRedClr),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -42,8 +51,15 @@ class _DateRow extends StatelessWidget {
           titleDate,
           style: style3,
         ),
-        Spacer(),
-        Text(dateText, style: style4),
+        Spacer(
+          flex: 2,
+        ),
+        Text(
+          dateText,
+          style: style4.copyWith(
+            color: titleDate == 'Uploaded Date  :' ? kGreenClr : kRedClr,
+          ),
+        ),
       ],
     );
   }

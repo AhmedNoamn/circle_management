@@ -1,13 +1,17 @@
 part of '../view.dart';
 
-KShowDialog(BuildContext context) {
+showDeleteDialog(BuildContext context, String taskId) {
+  final cubit = HomeCubit.of(context);
   return showDialog(
     context: context,
-    builder: (context) => DeleteDialog(),
+    builder: (context) => DeleteDialog(cubit),
   );
 }
 
 class DeleteDialog extends StatelessWidget {
+  final HomeCubit cubit;
+
+  const DeleteDialog(this.cubit);
   @override
   Widget build(BuildContext context) {
     return AlertDialog(

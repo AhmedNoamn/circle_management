@@ -19,8 +19,8 @@ class LoadingIndicatorView extends StatelessWidget {
   }
 }
 
-class CuirclarIndicator extends StatelessWidget {
-  const CuirclarIndicator({this.color});
+class CircularIndicator extends StatelessWidget {
+  const CircularIndicator({this.color});
 
   final Color? color;
   @override

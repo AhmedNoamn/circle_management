@@ -5,7 +5,7 @@ import '../constant.dart';
 // ignore: must_be_immutable
 class CustomInputField extends StatelessWidget {
   const CustomInputField({
-    required this.hint,
+    this.hint,
     this.obscureText,
     this.onSaved,
     this.validator,
@@ -17,7 +17,7 @@ class CustomInputField extends StatelessWidget {
 
   final bool? obscureText;
   final Widget? trailling;
-  final String hint;
+  final String? hint;
   final String? Function(String?)? validator;
   final Function(String?)? onSaved;
   final Color? fieldColor;

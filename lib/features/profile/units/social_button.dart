@@ -38,32 +38,26 @@ class _SocialButtonUnit extends StatelessWidget {
                   ),
                 ],
               ),
-        divider,
         cubit.isCurrentUser
-            ? CustomButton(
-                onTap: () async {
-                  await _authInit.signOut();
-                  MagicRoute.navigateAndReplacement(SignInView());
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
+            ? Column(
+                children: [
+                  divider,
+                  CustomButton(
+                    onTap: () async {
+                      await _authInit.signOut();
+                      MagicRoute.navigateAndReplacement(SignInView());
+                    },
+                    child: Text(
                       'LOG OUT',
                       style: style2.copyWith(fontSize: 16),
                     ),
-                    SizedBox(width: 10),
-                    Icon(
-                      FontAwesomeIcons.signOutAlt,
-                      color: kWhiteClr,
-                    ),
-                  ],
-                ),
-                height: 50,
-                width: sizeWidth(context, 2.5),
+                    height: 50,
+                    width: sizeWidth(context, 2.5),
+                  )
+                ],
               )
             : SizedBox(
-                height: 0,
+                height: 30,
               ),
       ],
     );

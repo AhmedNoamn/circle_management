@@ -4,19 +4,24 @@ import '../constant.dart';
 
 class TaskInputField extends StatelessWidget {
   const TaskInputField({
-    required this.hint,
+    this.hint,
     this.maxLines,
     this.onTap,
     this.enabled,
     this.onSaved,
+    this.validator,
     this.trailling,
+    this.controller,
   });
   final int? maxLines;
-  final String hint;
+  final String? hint;
   final bool? enabled;
   final Function(String?)? onSaved;
+  final String? Function(String?)? validator;
   final Function()? onTap;
   final Widget? trailling;
+  final TextEditingController? controller;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -35,6 +40,8 @@ class TaskInputField extends StatelessWidget {
               child: TextFormField(
                 enabled: enabled ?? true,
                 maxLines: maxLines ?? 1,
+                controller: controller,
+                validator: validator,
                 onSaved: onSaved,
                 style: hint == '' ? style4 : style2.copyWith(color: kDarkClr),
                 cursorColor: kBlueClr,

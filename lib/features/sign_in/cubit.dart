@@ -29,7 +29,5 @@ class SignInCubit extends Cubit<SignInStates> {
     } catch (e) {
       showSnackBar(e.toString());
     }
-
-    emit(SignInInit());
   }
 }

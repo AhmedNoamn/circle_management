@@ -10,19 +10,19 @@ class Validator {
   static String? validName(String? value) {
     if (value!.isEmpty)
       return 'the name shouldn\'t be empty';
-    else if (value.length < 3) return 'the name should be at least 3 character';
+    else if (value.length < 3) return 'name should be at least 3 character';
   }
 
   static String? validPassword(String? value) {
     if (value!.isEmpty)
       return 'Password is empty';
     else if (value.contains(' '))
-      return 'the password should\'nt contain spacing';
+      return 'password should\'nt contain spacing';
     else if (!value.contains(
       RegExp(
         r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}$',
       ),
-    )) return 'the password must have contain upper and lower character';
+    )) return 'password must contain \n upper and lower character';
   }
 
   static String? validNumber(String? value) {
@@ -33,7 +33,7 @@ class Validator {
         r'^(?=.*\d).{7,}$',
       ),
     )) {
-      return 'invalid phone number it should be only numeric';
+      return 'phone number should be numeric';
     }
   }
 }

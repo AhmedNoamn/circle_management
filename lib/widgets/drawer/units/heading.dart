@@ -13,7 +13,7 @@ class _Heading extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          SizedBox(height: 20),
+          SizedBox(height: 15),
           CircleAvatar(
             child: Image.asset('assets/images/monitor.png'),
             radius: 40,

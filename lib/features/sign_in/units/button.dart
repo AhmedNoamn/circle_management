@@ -9,7 +9,7 @@ class _ButtonsUnit extends StatelessWidget {
         Align(
           alignment: Alignment.bottomRight,
           child: CustomTextButton(
-              ontap: () => MagicRoute.navigateTo(
+              onTap: () => MagicRoute.navigateTo(
                     ForgetPasswordView(),
                   ),
               child: Text(
@@ -24,7 +24,7 @@ class _ButtonsUnit extends StatelessWidget {
           bloc: cubit,
           builder: (context, state) {
             return state is SignInLoading
-                ? CuirclarIndicator()
+                ? CircularIndicator()
                 : CustomButton(
                     onTap: cubit.sigIn,
                     child: Text(
@@ -41,7 +41,7 @@ class _ButtonsUnit extends StatelessWidget {
             ),
           ),
           CustomTextButton(
-              ontap: () => MagicRoute.navigateAndReplacement(SignUpView()),
+              onTap: () => MagicRoute.navigateAndReplacement(SignUpView()),
               child: Text(
                 'Sign up',
                 style: style3.copyWith(color: kGreenClr),

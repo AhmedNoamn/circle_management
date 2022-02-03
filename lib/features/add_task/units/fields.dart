@@ -32,6 +32,7 @@ class _FieldUnit extends StatelessWidget {
           TaskInputField(
             hint: ' ',
             onSaved: (save) => cubit.taskTitle = save!,
+            validator: Validator.validName,
           ),
           sizeBx,
           RichTextField(
@@ -43,6 +44,7 @@ class _FieldUnit extends StatelessWidget {
             maxLines: 4,
             hint: ' ',
             onSaved: (save) => cubit.taskDescription = save!,
+            validator: Validator.validName,
           ),
           sizeBx,
           RichTextField(
@@ -50,17 +52,12 @@ class _FieldUnit extends StatelessWidget {
             secondText: '  *',
             style: style3,
           ),
-
-          //TODO:
           BlocBuilder(
             bloc: cubit,
             builder: (context, state) {
               return TaskInputField(
-                hint: 'Pick a Date ',
                 onTap: () => _showDateDialog(context),
-                onSaved: (save) {
-                  cubit.getDeadLineDate(save);
-                },
+                controller: cubit.dedLineDate,
                 enabled: false,
                 trailling: Icon(
                   FontAwesomeIcons.angleDown,

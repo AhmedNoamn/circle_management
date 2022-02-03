@@ -3,6 +3,7 @@ part of '../view.dart';
 class _AppBarUnit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //final cubit = HomeCubit.of(context);
     return AppBar(
       backgroundColor: kBlueClr,
       elevation: 0,

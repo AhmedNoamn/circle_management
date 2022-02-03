@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:circle_management/core/routes/routes.dart';
-import 'package:circle_management/features/profile/view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,8 +7,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:circle_management/constant.dart';
+import 'package:circle_management/core/routes/routes.dart';
+import 'package:circle_management/features/profile/view.dart';
 import 'package:circle_management/features/register_employees/states.dart';
 import 'package:circle_management/widgets/drawer/drawer.dart';
+import 'package:circle_management/widgets/error_message.dart';
 import 'package:circle_management/widgets/loading_view.dart';
 import 'package:circle_management/widgets/snack_bar.dart';
 import 'package:circle_management/widgets/task_card.dart';

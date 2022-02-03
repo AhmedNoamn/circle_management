@@ -7,15 +7,13 @@ class CustomDialog extends StatelessWidget {
   const CustomDialog({
     required this.titleDialoge,
     required this.listLength,
-    required this.listItem,
+    required this.itemBuilder,
     this.actionList,
-    this.onTap,
   });
   final String titleDialoge;
   final int listLength;
-  final List<String> listItem;
+  final Widget Function(BuildContext, int) itemBuilder;
   final List<Widget>? actionList;
-  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +30,18 @@ class CustomDialog extends StatelessWidget {
       content: SizedBox(
         width: sizeWidth(context, 1),
         child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: listLength,
-            itemBuilder: (context, index) => GestureDetector(
+          shrinkWrap: true,
+          itemCount: listLength,
+          itemBuilder: itemBuilder,
+        ),
+      ),
+      actions: actionList!,
+    );
+  }
+}
+
+/*
+(context, index) => GestureDetector(
                   onTap: onTap,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -48,12 +55,8 @@ class CustomDialog extends StatelessWidget {
                       ],
                     ),
                   ),
-                )),
-      ),
-      actions: actionList!,
-    );
-  }
-}
+                )
+*/
 
 class CustomDropDownMenu extends StatelessWidget {
   const CustomDropDownMenu({
@@ -94,20 +97,3 @@ class CustomDropDownMenu extends StatelessWidget {
         ));
   }
 }
-/*
- (context, index) => GestureDetector(
-                  onTap: onTap,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(FontAwesomeIcons.checkSquare),
-                        Text(
-                          listItem[index],
-                          style: style3,
-                        )
-                      ],
-                    ),
-                  ),
-                )
-*/

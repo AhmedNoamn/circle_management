@@ -54,14 +54,14 @@ class _LogOutDialog extends StatelessWidget {
       ),
       actions: [
         CustomTextButton(
-          ontap: () => MagicRoute.pop(),
+          onTap: () => MagicRoute.pop(),
           child: Text(
             'Close ',
             style: style3,
           ),
         ),
         CustomTextButton(
-          ontap: () async {
+          onTap: () async {
             await _authInit.signOut();
             MagicRoute.pop();
             MagicRoute.navigateAndReplacement(SignInView());

@@ -8,7 +8,7 @@ class _InfoCardUnit extends StatelessWidget {
     return Card(
       margin: kPadding3,
       shape: RoundedRectangleBorder(
-        borderRadius: radius15,
+        borderRadius: radius25,
       ),
       child: BlocBuilder(
         bloc: cubit,
@@ -16,7 +16,7 @@ class _InfoCardUnit extends StatelessWidget {
           if (state is ProfileLoading) {
             return SizedBox(
               height: 300,
-              child: CuirclarIndicator(
+              child: CircularIndicator(
                 color: kBlueClr,
               ),
             );
@@ -36,7 +36,7 @@ class _InfoCardUnit extends StatelessWidget {
                 ),
                 size(10),
                 RichTextField(
-                  firstText: 'Joining Date : ',
+                  firstText: 'Joined Date : ',
                   secondText: cubit.userJoinedDate,
                   style: style3,
                 ),

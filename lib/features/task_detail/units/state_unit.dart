@@ -3,53 +3,57 @@ part of '../view.dart';
 class _StateUnit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Task State  ',
-          style: style3,
-        ),
-        SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Row(
-            children: const [
-              _CheckRow(
-                stateTitle: 'Done',
-                opacity: 1,
-                color: kGreenClr,
+    final cubit = TaskDetailCubit.of(context);
+    return BlocBuilder(
+      bloc: cubit,
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Task State  ',
+              style: style3,
+            ),
+            SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Row(
+                children: [
+                  //TODO:مش بيحدث اليو اى
+
+                  _CheckRow(
+                    onTap: () {
+                      cubit.updateTaskState(true);
+                    },
+                    stateTitle: 'Done',
+                    opacity: cubit.isTaskDone == true ? 1 : 0,
+                    color: kGreenClr,
+                  ),
+                  SizedBox(width: 80),
+                  _CheckRow(
+                    onTap: () {
+                      cubit.updateTaskState(false);
+                    },
+                    stateTitle: 'Not Done',
+                    opacity: cubit.isTaskDone == false ? 1 : 0,
+                    color: kRedClr,
+                  ),
+                ],
               ),
-              SizedBox(width: 80),
-              _CheckRow(
-                stateTitle: 'Not Done',
-                opacity: 1,
-                color: kRedClr,
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Divider(
-            height: 25,
-            thickness: 2,
-            color: kGreyClr,
-          ),
-        ),
-        Text(
-          'Task Description',
-          style: style3,
-        ),
-        SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Text(
-            'description',
-            style: style4.copyWith(color: kDarkClr.withOpacity(0.7)),
-          ),
-        ),
-      ],
+            ),
+            divider,
+            Text(
+              'Task Title : ' + cubit.taskTitle,
+              style: style3,
+            ),
+            SizedBox(height: 5),
+            Text(
+              'Description : ' + cubit.taskDescription,
+              style: style4.copyWith(color: kDarkClr.withOpacity(0.7)),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -59,26 +63,31 @@ class _CheckRow extends StatelessWidget {
     required this.stateTitle,
     required this.opacity,
     required this.color,
+    required this.onTap,
   });
 
   final String stateTitle;
   final double opacity;
   final Color color;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          stateTitle,
-          style: style4,
-        ),
-        Opacity(
-            opacity: opacity,
-            child: Icon(
-              Icons.check_box,
-              color: color,
-            )),
-      ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Opacity(
+              opacity: opacity,
+              child: Icon(
+                Icons.check_box,
+                color: color,
+              )),
+          Text(
+            ' ' + stateTitle,
+            style: style4,
+          ),
+        ],
+      ),
     );
   }
 }

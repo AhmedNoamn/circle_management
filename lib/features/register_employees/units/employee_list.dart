@@ -15,7 +15,7 @@ class _EmployeesListUnit extends StatelessWidget {
             //
             return SizedBox(
               height: 300,
-              child: CuirclarIndicator(
+              child: CircularIndicator(
                 color: kBlueClr,
               ),
             );
@@ -38,16 +38,18 @@ class _EmployeesListUnit extends StatelessWidget {
                         );
                       },
                       onLongPress: null,
-                      imageUrl: Image.network(
-                        _userData['userImageUrl'],
-                        fit: BoxFit.cover,
-                      ),
+                      imageUrl: snapShot.connectionState == ConnectionState.none
+                          ? Image.asset('assets/images/man.png')
+                          : Image.network(
+                              _userData['userImageUrl'],
+                              fit: BoxFit.cover,
+                            ),
                       title: _userData['userName'],
                       description: _userData['jobPosition'] +
                           ' ' +
                           _userData['phoneNumber'],
                       trailling: CustomTextButton(
-                          ontap: () =>
+                          onTap: () =>
                               cubit.sendEmailMessage(_userData['email']),
                           child: Icon(
                             FontAwesomeIcons.envelope,
@@ -59,43 +61,17 @@ class _EmployeesListUnit extends StatelessWidget {
             }
             //
             else {
-              return _ErrorMessage(
+              return ErrorMessage(
                 text: 'there is no data to display ',
                 imageUrl: 'assets/images/warning.png',
               );
             }
           }
           //
-          return _ErrorMessage(
+          return ErrorMessage(
             text: 'something went wrong',
             imageUrl: 'assets/images/xxx.png',
           );
         });
-  }
-}
-
-class _ErrorMessage extends StatelessWidget {
-  const _ErrorMessage({
-    required this.text,
-    required this.imageUrl,
-  });
-
-  final String text;
-  final String imageUrl;
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(imageUrl),
-          Text(
-            text,
-            style: style1,
-          ),
-        ],
-      ),
-    );
   }
 }

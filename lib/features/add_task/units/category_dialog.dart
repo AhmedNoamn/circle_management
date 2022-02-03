@@ -3,7 +3,7 @@ part of '../view.dart';
 _showCategoryDialog(BuildContext context) {
   final cubit = AddTaskCubit.of(context);
   return CustomDropDownMenu(
-      itemValue: cubit.categoryTask,
+      itemValue: cubit.taskCategory,
       onChanged: (value) => cubit.getCategoryTask(value),
       generateItems: categoryTaskItem
           .map<DropdownMenuItem<String>>(

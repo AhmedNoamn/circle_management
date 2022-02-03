@@ -10,8 +10,8 @@ class ButtonsUnit extends StatelessWidget {
         BlocBuilder(
             bloc: cubit,
             builder: (context, state) {
-              return state is SignUpLoading?
-                  ? CuirclarIndicator()
+              return state is SignUpLoading
+                  ? CircularIndicator()
                   : CustomButton(
                       onTap: cubit.signUp,
                       child: Text(
@@ -19,20 +19,24 @@ class ButtonsUnit extends StatelessWidget {
                         style: style2,
                       ));
             }),
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text(
-            'already have an Account ? ',
-            style: style4.copyWith(
-              fontWeight: FontWeight.bold,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'already have an Account ? ',
+              style: style4.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          CustomTextButton(
-              ontap: () => MagicRoute.navigateAndPopAll(SignInView()),
+            CustomTextButton(
+              onTap: () => MagicRoute.navigateAndPopAll(SignInView()),
               child: Text(
                 'Sign in',
                 style: style3.copyWith(color: kGreenClr),
-              ))
-        ])
+              ),
+            ),
+          ],
+        )
       ],
     );
   }

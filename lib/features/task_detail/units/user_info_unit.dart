@@ -1,38 +1,46 @@
 part of '../view.dart';
 
-class _UserData extends StatelessWidget {
+class _UserDataUnit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // Text(
-        //   'Updated by ',
-        //   style: style3.copyWith(fontSize: 19),
-        // ),
-        // Spacer(),
-        CircleAvatar(
-          radius: 27,
-          backgroundColor: Colors.transparent,
-          backgroundImage: AssetImage(
-            'assets/images/man.png',
-          ),
-        ),
-        SizedBox(width: 15),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    final cubit = TaskDetailCubit.of(context);
+    return BlocBuilder(
+      bloc: cubit,
+      builder: (context, state) {
+        return Row(
           children: [
-            Text(
-              'Updated user ',
-              style: style3,
-            ),
-            SizedBox(height: 10),
-            Text(
-              '  Updated position ',
-              style: style3.copyWith(color: kDarkClr.withOpacity(0.5)),
-            ),
+            state is TaskDetailLoading?
+                ? CircleAvatar(
+                    radius: 22,
+                    backgroundColor: Colors.transparent,
+                    child: Image.asset('assets/images/man.png'),
+                  )
+                : ClipRRect(
+                    borderRadius: BorderRadius.circular(30),
+                    child: Image.network(
+                      cubit.userImageUrl,
+                      height: 50,
+                      width: 50,
+                    ),
+                  ),
+            SizedBox(width: 20),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  cubit.userName,
+                  style: style3,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  '    ' + cubit.jobPosition,
+                  style: style3.copyWith(color: kDarkClr.withOpacity(0.5)),
+                ),
+              ],
+            )
           ],
-        )
-      ],
+        );
+      },
     );
   }
 }

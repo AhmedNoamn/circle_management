@@ -33,12 +33,11 @@ class ProfileCubit extends Cubit<ProfileStates> {
         Timestamp joinedtime = _userData.get('userJoinedTime');
         var joinedDate = joinedtime.toDate();
         userJoinedDate =
-            '${joinedDate.day}/${joinedDate.month}/${joinedDate.year}';
+            '${joinedDate.day}/ ${joinedDate.month}/ ${joinedDate.year}';
 
         final User? _user = _auth.currentUser;
         final _uid = _user!.uid;
         isCurrentUser = _uid == userId;
-        print('current User: $isCurrentUser');
       }
     } catch (e) {
       showSnackBar(e.toString());
