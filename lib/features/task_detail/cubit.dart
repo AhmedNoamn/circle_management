@@ -97,15 +97,17 @@ class TaskDetailCubit extends Cubit<TaskDetailStates> {
     try {
       final User? _user = _auth.currentUser;
       final _commenterId = _user!.uid;
-      final _commenterName = _user.displayName;
-      final _commenterImage = _user.photoURL;
       final _autoCommentId = Uuid().v4();
+      final _currentUser = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(_commenterId)
+          .get();
 
       final _commentData = {
         'userID': _commenterId,
         'commentID': _autoCommentId,
-        'userName': _commenterName,
-        'userImageUrl': _commenterImage,
+        'userName': _currentUser.get('userName'),
+        'userImageUrl': _currentUser.get('userImageUrl'),
         'commentBody': saveComment,
         'commentDate': Timestamp.now(),
       };

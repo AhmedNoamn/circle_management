@@ -4,12 +4,11 @@ class _CommentUnit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = TaskDetailCubit.of(context);
+    final future =
+        FirebaseFirestore.instance.collection('tasks').doc(cubit.taskID).get();
 
     return FutureBuilder<DocumentSnapshot>(
-        future: FirebaseFirestore.instance
-            .collection('tasks')
-            .doc(cubit.taskID)
-            .get(),
+        future: future,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularIndicator();
@@ -34,16 +33,19 @@ class _CommentUnit extends StatelessWidget {
                       ),
                     ),
                     leading: CircleAvatar(
-                      radius: 22,
-                      backgroundColor: Colors.transparent,
-                      child: snapshot.connectionState == ConnectionState.none
-                          ? Image.asset(
-                              'assets/images/man.png',
-                            )
-                          : Image.network(
-                              _commentData['userImageUrl'],
-                            ),
-                    ),
+                        radius: 25,
+                        backgroundColor: Colors.transparent,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(25),
+                          child:
+                              snapshot.connectionState == ConnectionState.none
+                                  ? Image.asset(
+                                      'assets/images/man.png',
+                                    )
+                                  : Image.network(
+                                      _commentData['userImageUrl'],
+                                    ),
+                        )),
                     title: Text(
                       _commentData['userName'],
                     ),

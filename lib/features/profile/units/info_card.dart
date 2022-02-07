@@ -6,7 +6,7 @@ class _InfoCardUnit extends StatelessWidget {
     final cubit = ProfileCubit.of(context);
     size(double height) => SizedBox(height: height);
     return Card(
-      margin: kPadding3,
+      margin: kPadding1(20, 60),
       shape: RoundedRectangleBorder(
         borderRadius: radius25,
       ),
@@ -23,7 +23,7 @@ class _InfoCardUnit extends StatelessWidget {
           } else {
             return Column(
               children: [
-                size(80),
+                size(70),
                 Text(
                   cubit.userName,
                   style: style3,

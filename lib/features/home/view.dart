@@ -8,7 +8,6 @@ import 'package:circle_management/constant.dart';
 import 'package:circle_management/core/routes/routes.dart';
 import 'package:circle_management/features/home/states.dart';
 import 'package:circle_management/features/task_detail/view.dart';
-import 'package:circle_management/widgets/custom_dialog.dart';
 import 'package:circle_management/widgets/drawer/drawer.dart';
 import 'package:circle_management/widgets/error_message.dart';
 import 'package:circle_management/widgets/loading_view.dart';
@@ -18,7 +17,7 @@ import 'package:circle_management/widgets/text_button.dart';
 
 part 'cubit.dart';
 part 'units/app_bar.dart';
-part 'units/delete_dialog.dart';
+part 'units/dismissible_task.dart';
 part 'units/filter_dialog.dart';
 part 'units/task_list.dart';
 
@@ -26,7 +25,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(),
+      create: (context) => HomeCubit()..passCurrentUser(),
       child: Scaffold(
         drawer: DrawerUnit(),
         appBar: PreferredSize(

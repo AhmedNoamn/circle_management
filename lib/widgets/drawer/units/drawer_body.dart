@@ -25,7 +25,7 @@ class _DrawerBody extends StatelessWidget {
                   },
                   leading: Icon(FontAwesomeIcons.folderOpen),
                   title: Text(
-                    'projects',
+                    'Tasks',
                     style: style3,
                   )),
               ListTileUnit(

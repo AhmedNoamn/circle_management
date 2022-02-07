@@ -6,26 +6,38 @@ class HomeCubit extends Cubit<HomeStates> {
   static HomeCubit of(context) => BlocProvider.of(context);
 
   String? taskCategory;
+  String? currentUse;
 
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-  void FilterResult(String? value) {
-    taskCategory = value;
+  void passCurrentUser() {
+    final User? _user = _auth.currentUser;
+    final _uId = _user!.uid;
+
+    currentUse = _uId;
 
     emit(HomeInit());
   }
 
-  void deleteTask(String taskId, String userId) {
+  void FilterResult(String? value) {
+    taskCategory = value;
+    emit(HomeInit());
+  }
+
+  void deleteTask(String taskId, String userId) async {
     emit(HomeLoading());
+
     final User? _user = _auth.currentUser;
-    final userID = _user!.uid;
-    if (userID == userId) {
+    final _uId = _user!.uid;
+
+    if (_uId == userId) {
       FirebaseFirestore.instance
           .collection('tasks')
           .doc(
             taskId,
           )
           .delete();
+
       showSnackBar('task deleted successfully');
     } else {
       showSnackBar('not allowed to delete this task');

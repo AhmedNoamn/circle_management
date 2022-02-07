@@ -57,6 +57,7 @@ class AddTaskCubit extends Cubit<AddTaskState> {
           .doc(taskId)
           .set(_taskData);
       showSnackBar('Task Uploaded Successfully');
+      MagicRoute.navigateAndPopAll(HomeView());
 
       formKey.currentState!.reset();
       dedLineDate.clear();

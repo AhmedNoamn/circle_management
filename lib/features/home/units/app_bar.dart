@@ -17,7 +17,7 @@ class _AppBarUnit extends StatelessWidget {
         );
       }),
       title: Text(
-        'Projects',
+        'Tasks',
         style: style2,
       ),
       actions: [

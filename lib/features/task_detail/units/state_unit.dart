@@ -4,56 +4,63 @@ class _StateUnit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = TaskDetailCubit.of(context);
-    return BlocBuilder(
-      bloc: cubit,
-      builder: (context, state) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Task State  ',
-              style: style3,
-            ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Row(
-                children: [
-                  //TODO:مش بيحدث اليو اى
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Task State  ',
+          style: style3,
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Row(
+            children: [
+              //TODO:مش بيحدث اليو اى
 
-                  _CheckRow(
+              BlocBuilder(
+                bloc: cubit,
+                buildWhen: (previous, current) => previous != current,
+                builder: (context, state) {
+                  return _CheckRow(
                     onTap: () {
                       cubit.updateTaskState(true);
                     },
                     stateTitle: 'Done',
                     opacity: cubit.isTaskDone == true ? 1 : 0,
                     color: kGreenClr,
-                  ),
-                  SizedBox(width: 80),
-                  _CheckRow(
+                  );
+                },
+              ),
+              SizedBox(width: 80),
+              BlocBuilder(
+                bloc: cubit,
+                buildWhen: (previous, current) => previous != current,
+                builder: (context, state) {
+                  return _CheckRow(
                     onTap: () {
                       cubit.updateTaskState(false);
                     },
                     stateTitle: 'Not Done',
                     opacity: cubit.isTaskDone == false ? 1 : 0,
                     color: kRedClr,
-                  ),
-                ],
+                  );
+                },
               ),
-            ),
-            divider,
-            Text(
-              'Task Title : ' + cubit.taskTitle,
-              style: style3,
-            ),
-            SizedBox(height: 5),
-            Text(
-              'Description : ' + cubit.taskDescription,
-              style: style4.copyWith(color: kDarkClr.withOpacity(0.7)),
-            ),
-          ],
-        );
-      },
+            ],
+          ),
+        ),
+        divider,
+        Text(
+          'Task Title : ' + cubit.taskTitle,
+          style: style3,
+        ),
+        SizedBox(height: 5),
+        Text(
+          'Description : ' + cubit.taskDescription,
+          style: style4.copyWith(color: kDarkClr.withOpacity(0.7)),
+        ),
+      ],
     );
   }
 }

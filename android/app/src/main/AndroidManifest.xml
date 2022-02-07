@@ -19,7 +19,7 @@
 </queries>
   
    <application
-        android:label="circle_management"
+        android:label="CircleManagement"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">

@@ -33,7 +33,7 @@ class ProfileView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: kGreyClr.withOpacity(0.8),
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50),
+          preferredSize: Size.fromHeight(60),
           child: _AppBarUnit(),
         ),
         body: ListView(
@@ -42,7 +42,7 @@ class ProfileView extends StatelessWidget {
             Stack(
               children: [
                 _InfoCardUnit(),
-                _ImageUUnit(),
+                _ImageUnit(),
               ],
             ),
           ],

@@ -37,6 +37,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
 
         final User? _user = _auth.currentUser;
         final _uid = _user!.uid;
+
         isCurrentUser = _uid == userId;
       }
     } catch (e) {
@@ -45,30 +46,10 @@ class ProfileCubit extends Cubit<ProfileStates> {
     emit(ProfileInit());
   }
 
-//
-  Future<void> sendWhatsAppMessage() async {
+  Future<void> sendMessageOrCallEmployee(String url) async {
     try {
       emit(ProfileLoading());
-      await launch(
-          'https://wa.me/+20' + phoneNumber + '?text= how can i help you ?');
-    } catch (e) {
-      showSnackBar(e.toString());
-    }
-  }
-
-  Future<void> sendEmailMessage() async {
-    try {
-      emit(ProfileLoading());
-      await launch('mailto:$email');
-    } catch (e) {
-      showSnackBar(e.toString());
-    }
-  }
-
-  Future<void> callEmployee() async {
-    try {
-      emit(ProfileLoading());
-      await launch('tel:+20' + phoneNumber);
+      await launch(url);
     } catch (e) {
       showSnackBar(e.toString());
     }

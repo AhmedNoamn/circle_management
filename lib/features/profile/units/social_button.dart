@@ -16,25 +16,38 @@ class _SocialButtonUnit extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   CircleButton(
-                    icon: Icon(
-                      FontAwesomeIcons.whatsapp,
-                      color: kGreenClr,
-                    ),
-                    onTap: cubit.sendWhatsAppMessage,
-                  ),
+                      icon: Icon(
+                        FontAwesomeIcons.whatsapp,
+                        color: kGreenClr,
+                      ),
+                      onTap: () {
+                        cubit.sendMessageOrCallEmployee(
+                          'https://wa.me/+2' +
+                              cubit.phoneNumber +
+                              '?text= how can i help you ?',
+                        );
+                      }),
                   CircleButton(
                     icon: Icon(
                       FontAwesomeIcons.envelope,
                       color: kGreenClr,
                     ),
-                    onTap: cubit.sendEmailMessage,
+                    onTap: () {
+                      cubit.sendMessageOrCallEmployee(
+                        'mailto:${cubit.email}',
+                      );
+                    },
                   ),
                   CircleButton(
                     icon: Icon(
                       FontAwesomeIcons.phone,
                       color: kGreenClr,
                     ),
-                    onTap: cubit.callEmployee,
+                    onTap: () {
+                      cubit.sendMessageOrCallEmployee(
+                        'tel:+2' + cubit.phoneNumber,
+                      );
+                    },
                   ),
                 ],
               ),

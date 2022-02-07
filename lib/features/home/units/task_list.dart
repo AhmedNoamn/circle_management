@@ -31,32 +31,18 @@ class _TaskListUnit extends StatelessWidget {
                   itemCount: snapShot.data!.docs.length,
                   itemBuilder: (context, index) {
                     final _taskData = snapShot.data!.docs[index];
-                    //TODO:
-                    return Dismissible(
-                      direction: DismissDirection.startToEnd,
+
+                    return _DismisssibleUnit(
+                      direction: cubit.currentUse == _taskData['taskUpLoadedBy']
+                          ? DismissDirection.startToEnd
+                          : DismissDirection.none,
+                      disKey: Key(_taskData['taskId']),
                       onDismissed: (direction) {
                         cubit.deleteTask(
                           _taskData['taskId'],
                           _taskData['taskUpLoadedBy'],
                         );
                       },
-                      key: Key(_taskData['taskId']),
-                      background: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Text(
-                            'Delete ',
-                            style: style2.copyWith(color: kDarkClr),
-                          ),
-                          Icon(
-                            Icons.delete,
-                            color: kRedClr,
-                          ),
-                        ],
-                      ),
                       child: CustomCard(
                         onTap: () => MagicRoute.navigateTo(
                           TaskDetailView(

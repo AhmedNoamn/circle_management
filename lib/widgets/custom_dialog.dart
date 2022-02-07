@@ -40,24 +40,6 @@ class CustomDialog extends StatelessWidget {
   }
 }
 
-/*
-(context, index) => GestureDetector(
-                  onTap: onTap,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Icon(FontAwesomeIcons.checkSquare),
-                        Text(
-                          listItem[index],
-                          style: style3,
-                        )
-                      ],
-                    ),
-                  ),
-                )
-*/
-
 class CustomDropDownMenu extends StatelessWidget {
   const CustomDropDownMenu({
     required this.itemValue,

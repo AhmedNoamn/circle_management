@@ -27,6 +27,7 @@ class SignInCubit extends Cubit<SignInStates> {
       print(uid);
       MagicRoute.navigateAndPopAll(HomeView());
     } catch (e) {
+      emit(SignInInit());
       showSnackBar(e.toString());
     }
   }

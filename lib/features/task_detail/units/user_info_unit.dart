@@ -9,20 +9,18 @@ class _UserDataUnit extends StatelessWidget {
       builder: (context, state) {
         return Row(
           children: [
-            state is TaskDetailLoading?
-                ? CircleAvatar(
-                    radius: 22,
-                    backgroundColor: Colors.transparent,
-                    child: Image.asset('assets/images/man.png'),
-                  )
-                : ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
-                    child: Image.network(
-                      cubit.userImageUrl,
-                      height: 50,
-                      width: 50,
-                    ),
-                  ),
+            CircleAvatar(
+              radius: 25,
+              backgroundColor: Colors.transparent,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25),
+                child: state is TaskDetailLoading
+                    ? Image.asset('assets/images/man.png')
+                    : Image.network(
+                        cubit.userImageUrl,
+                      ),
+              ),
+            ),
             SizedBox(width: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

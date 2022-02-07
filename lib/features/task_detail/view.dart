@@ -55,7 +55,7 @@ class TaskDetailView extends StatelessWidget {
                   style: style1,
                 ),
               ),
-              SizedBox(height: sizeHeight(context, 30)),
+              SizedBox(height: 20),
               _CardTaskInfo(),
             ],
           ),
