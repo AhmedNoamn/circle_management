@@ -82,7 +82,7 @@ double sizeWidth(BuildContext context, double fraction) {
 
 TextStyle get style1 {
   return TextStyle(
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     color: kDarkClr,
     fontSize: 30,
   );

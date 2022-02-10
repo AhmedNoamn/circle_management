@@ -1,4 +1,4 @@
-import 'package:circle_management/constant.dart';
+import '../constant.dart';
 import 'package:flutter/material.dart';
 
 class ListTileUnit extends StatelessWidget {

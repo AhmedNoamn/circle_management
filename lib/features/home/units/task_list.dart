@@ -5,7 +5,7 @@ class _TaskListUnit extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = HomeCubit.of(context);
 
-    Stream<QuerySnapshot<Object?>> stream = FirebaseFirestore.instance
+    Stream<QuerySnapshot> stream = FirebaseFirestore.instance
         .collection('tasks')
         .where('taskCategory', isEqualTo: cubit.taskCategory)
         .orderBy('taskCreatedDate', descending: true)

@@ -23,7 +23,7 @@ _showJobDialog(BuildContext context) {
 }
 
 List<String> jobName = [
-  'Select a Job Position',
+  'Select a Position',
   'Manager',
   'Team Leader',
   'Designer',

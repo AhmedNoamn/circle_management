@@ -1,10 +1,10 @@
-import 'package:circle_management/core/routes/routes.dart';
+import '../../core/routes/routes.dart';
 import 'package:flutter/material.dart';
 
-import 'package:circle_management/constant.dart';
-import 'package:circle_management/widgets/background_image.dart';
-import 'package:circle_management/widgets/button.dart';
-import 'package:circle_management/widgets/inputfield.dart';
+import '../../constant.dart';
+import '../../widgets/background_image.dart';
+import '../../widgets/button.dart';
+import '../../widgets/inputfield.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 part 'units/button.dart';

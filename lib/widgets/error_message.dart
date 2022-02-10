@@ -1,4 +1,4 @@
-import 'package:circle_management/constant.dart';
+import '../constant.dart';
 import 'package:flutter/material.dart';
 
 class ErrorMessage extends StatelessWidget {
@@ -16,10 +16,14 @@ class ErrorMessage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(imageUrl),
+          Image.asset(
+            imageUrl,
+            height: 250,
+            width: 200,
+          ),
           Text(
             text,
-            style: style1,
+            style: style1.copyWith(fontSize: 18),
           ),
         ],
       ),

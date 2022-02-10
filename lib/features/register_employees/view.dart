@@ -6,16 +6,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:circle_management/constant.dart';
-import 'package:circle_management/core/routes/routes.dart';
-import 'package:circle_management/features/profile/view.dart';
-import 'package:circle_management/features/register_employees/states.dart';
-import 'package:circle_management/widgets/drawer/drawer.dart';
-import 'package:circle_management/widgets/error_message.dart';
-import 'package:circle_management/widgets/loading_view.dart';
-import 'package:circle_management/widgets/snack_bar.dart';
-import 'package:circle_management/widgets/task_card.dart';
-import 'package:circle_management/widgets/text_button.dart';
+import '../../constant.dart';
+import '../../core/routes/routes.dart';
+import '../profile/view.dart';
+import 'states.dart';
+import '../../widgets/drawer/drawer.dart';
+import '../../widgets/error_message.dart';
+import '../../widgets/loading_view.dart';
+import '../../widgets/snack_bar.dart';
+import '../../widgets/task_card.dart';
+import '../../widgets/text_button.dart';
 
 part 'cubit.dart';
 part 'units/app_bar.dart';

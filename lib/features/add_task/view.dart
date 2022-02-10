@@ -1,6 +1,6 @@
-import 'package:circle_management/core/routes/routes.dart';
-import 'package:circle_management/features/home/view.dart';
-import 'package:circle_management/widgets/loading_view.dart';
+import '../../core/routes/routes.dart';
+import '../home/view.dart';
+import '../../widgets/loading_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +8,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:uuid/uuid.dart';
 
-import 'package:circle_management/constant.dart';
-import 'package:circle_management/core/validator/validator.dart';
-import 'package:circle_management/features/add_task/status.dart';
-import 'package:circle_management/widgets/add_task_filed.dart';
-import 'package:circle_management/widgets/button.dart';
-import 'package:circle_management/widgets/custom_dialog.dart';
-import 'package:circle_management/widgets/drawer/drawer.dart';
-import 'package:circle_management/widgets/rich_text.dart';
-import 'package:circle_management/widgets/snack_bar.dart';
+import '../../constant.dart';
+import '../../core/validator/validator.dart';
+import 'status.dart';
+import '../../widgets/add_task_filed.dart';
+import '../../widgets/button.dart';
+import '../../widgets/custom_dialog.dart';
+import '../../widgets/drawer/drawer.dart';
+import '../../widgets/rich_text.dart';
+import '../../widgets/snack_bar.dart';
 
 part 'cubit.dart';
 part 'units/app_bar.dart';

@@ -23,7 +23,7 @@ _showCategoryDialog(BuildContext context) {
 }
 
 List<String> categoryTaskItem = [
-  'Choose a Category',
+  '',
   'Business',
   'Programming',
   'Information Technology',

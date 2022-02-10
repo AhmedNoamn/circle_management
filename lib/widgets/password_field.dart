@@ -1,4 +1,4 @@
-import 'package:circle_management/widgets/inputfield.dart';
+import 'inputfield.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

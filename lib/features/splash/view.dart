@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:circle_management/features/home/view.dart';
-import 'package:circle_management/features/sign_in/view.dart';
-import 'package:circle_management/widgets/loading_view.dart';
+import '../home/view.dart';
+import '../sign_in/view.dart';
+import '../../widgets/loading_view.dart';
 
 class SplashView extends StatelessWidget {
   @override

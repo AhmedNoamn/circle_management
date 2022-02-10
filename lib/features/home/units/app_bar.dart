@@ -3,7 +3,6 @@ part of '../view.dart';
 class _AppBarUnit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //final cubit = HomeCubit.of(context);
     return AppBar(
       backgroundColor: kBlueClr,
       elevation: 0,
@@ -22,7 +21,9 @@ class _AppBarUnit extends StatelessWidget {
       ),
       actions: [
         IconButton(
-            onPressed: () => _showFilterDialog(context),
+            onPressed: () {
+              _showFilterDialog(context);
+            },
             icon: Icon(
               FontAwesomeIcons.filter,
               color: kGreyClr,

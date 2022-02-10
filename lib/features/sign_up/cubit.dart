@@ -11,7 +11,7 @@ class SignUpCubit extends Cubit<SignUpStates> {
   late String email;
   late String password;
   late String phoneNumber;
-  String jobPosition = 'Select a Job Position';
+  String jobPosition = 'Select a Position';
   late String imageUrl;
   final formKey = GlobalKey<FormState>();
 
