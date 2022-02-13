@@ -4,11 +4,9 @@ class _CommentUnit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = TaskDetailCubit.of(context);
-    final future =
-        FirebaseFirestore.instance.collection('tasks').doc(cubit.taskID).get();
 
-    return FutureBuilder<DocumentSnapshot>(
-        future: future,
+    return StreamBuilder<DocumentSnapshot>(
+        stream: cubit.getCommentStream(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularIndicator();

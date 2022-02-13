@@ -1,5 +1,6 @@
-import '../constant.dart';
 import 'package:flutter/material.dart';
+
+import '../constant.dart';
 
 class LoadingIndicatorView extends StatelessWidget {
   @override
@@ -26,9 +27,8 @@ class CircularIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: CircularProgressIndicator(
-        color: color ?? kGreyClr,
-      ),
-    );
+        child: CircularProgressIndicator(
+      color: color ?? kGreenClr,
+    ));
   }
 }

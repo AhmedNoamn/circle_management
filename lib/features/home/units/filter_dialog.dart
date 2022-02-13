@@ -18,10 +18,10 @@ class _FilterDialog extends StatelessWidget {
     return AlertDialog(
       actionsPadding: kPadding3,
       title: Container(
-        padding: kPadding,
+        padding: kPadding1(15, 10),
         color: kBlueClr,
         child: Text(
-          'Filter',
+          'Types of TaskCategory',
           style: style2,
         ),
       ),
@@ -32,7 +32,7 @@ class _FilterDialog extends StatelessWidget {
           itemCount: categoryTaskItem.length,
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
-              cubit.FilterResult(categoryTaskItem[index]);
+              cubit.taskSearchCategory = categoryTaskItem[index];
               MagicRoute.pop(context);
             },
             child: Padding(
@@ -60,16 +60,6 @@ class _FilterDialog extends StatelessWidget {
             style: style3,
           ),
         ),
-        CustomTextButton(
-          onTap: () {
-            cubit.FilterResult(null);
-            MagicRoute.pop(context);
-          },
-          child: Text(
-            'Cancel Filter ',
-            style: style3,
-          ),
-        ),
       ],
     );
   }
@@ -84,49 +74,3 @@ List<String> categoryTaskItem = [
   'Design',
   'Accounting',
 ];
-
-/*
-CustomDialog(
-      titleDialoge: 'Filter',
-      listLength: categoryTaskItem.length,
-      itemBuilder: (context, index) => GestureDetector(
-        onTap: () {
-          cubit.FilterResult(categoryTaskItem[index]);
-          MagicRoute.pop(context);
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Icon(FontAwesomeIcons.checkSquare),
-              Text(
-                categoryTaskItem[index],
-                style: style3,
-              )
-            ],
-          ),
-        ),
-      ),
-      actionList: [
-        CustomTextButton(
-          onTap: () {
-            MagicRoute.pop();
-          },
-          child: Text(
-            'Close ',
-            style: style3,
-          ),
-        ),
-        CustomTextButton(
-          onTap: () {
-            cubit.FilterResult(null);
-            MagicRoute.pop(context);
-          },
-          child: Text(
-            'Cancel Filter ',
-            style: style3,
-          ),
-        ),
-      ],
-    ),
-*/

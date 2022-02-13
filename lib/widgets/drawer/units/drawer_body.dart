@@ -43,7 +43,7 @@ class _DrawerBody extends StatelessWidget {
                   onTap: () {
                     MagicRoute.pop();
                     MagicRoute.navigateAndPopUntilFirstPage(
-                        RegisterWorkerView());
+                        RegisterEmployeeView());
                   },
                   leading: Icon(FontAwesomeIcons.users),
                   title: Text(

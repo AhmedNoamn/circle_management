@@ -50,6 +50,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
     try {
       emit(ProfileLoading());
       await launch(url);
+      MagicRoute.navigateAndPopAll(RegisterEmployeeView());
     } catch (e) {
       showSnackBar(e.toString());
     }

@@ -4,10 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../constant.dart';
 import '../../core/routes/routes.dart';
-import '../forget_password/view.dart';
-import '../home/view.dart';
-import 'states.dart';
-import '../sign_up/view.dart';
 import '../../widgets/background_image.dart';
 import '../../widgets/button.dart';
 import '../../widgets/inputfield.dart';
@@ -15,6 +11,10 @@ import '../../widgets/loading_view.dart';
 import '../../widgets/password_field.dart';
 import '../../widgets/snack_bar.dart';
 import '../../widgets/text_button.dart';
+import '../forget_password/view.dart';
+import '../home/view.dart';
+import '../sign_up/view.dart';
+import 'states.dart';
 
 part 'cubit.dart';
 part 'units/button.dart';

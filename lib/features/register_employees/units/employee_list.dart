@@ -5,19 +5,14 @@ class _EmployeesListUnit extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = EmployeeCubit.of(context);
 
-    Stream<QuerySnapshot<Object?>> stream =
-        FirebaseFirestore.instance.collection('users').snapshots();
-
     return StreamBuilder<QuerySnapshot>(
-        stream: stream,
+        stream: cubit.getAllEmployeeStream(),
         builder: (context, snapShot) {
           if (snapShot.connectionState == ConnectionState.waiting) {
             //
             return SizedBox(
               height: 300,
-              child: CircularIndicator(
-                color: kBlueClr,
-              ),
+              child: CircularIndicator(),
             );
             //
           } else if (snapShot.connectionState == ConnectionState.active) {
@@ -38,12 +33,10 @@ class _EmployeesListUnit extends StatelessWidget {
                         );
                       },
                       onLongPress: null,
-                      imageUrl: snapShot.connectionState == ConnectionState.none
-                          ? Image.asset('assets/images/man.png')
-                          : Image.network(
-                              _userData['userImageUrl'],
-                              fit: BoxFit.cover,
-                            ),
+                      imageUrl: Image.network(
+                        _userData['userImageUrl'],
+                        fit: BoxFit.cover,
+                      ),
                       title: _userData['userName'],
                       description: _userData['jobPosition'] +
                           ' ' +

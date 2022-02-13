@@ -21,7 +21,7 @@ part 'cubit.dart';
 part 'units/app_bar.dart';
 part 'units/employee_list.dart';
 
-class RegisterWorkerView extends StatelessWidget {
+class RegisterEmployeeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

@@ -5,6 +5,12 @@ class EmployeeCubit extends Cubit<EmployeeStates> {
 
   static EmployeeCubit of(context) => BlocProvider.of(context);
 
+  Stream<QuerySnapshot<Object?>> getAllEmployeeStream() async* {
+    var _stream = FirebaseFirestore.instance.collection('users').snapshots();
+
+    yield* _stream;
+  }
+
   Future<void> sendEmailMessage(String email) async {
     try {
       emit(EmployeeLoading());

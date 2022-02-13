@@ -25,6 +25,13 @@ class TaskDetailCubit extends Cubit<TaskDetailStates> {
   late String userID;
   FirebaseAuth _auth = FirebaseAuth.instance;
 
+  Stream<DocumentSnapshot<Object?>> getCommentStream() async* {
+    var _stream =
+        FirebaseFirestore.instance.collection('tasks').doc(taskID).snapshots();
+
+    yield* _stream;
+  }
+
   Future<void> getTaskAndUserDetail(String userId, String taskId) async {
     emit(TaskDetailLoading());
 
@@ -83,6 +90,7 @@ class TaskDetailCubit extends Cubit<TaskDetailStates> {
           .update({'isTaskDone': value});
 
       showSnackBar('task state updated successfully');
+      MagicRoute.navigateAndReplacement(HomeView());
     } else {
       showSnackBar('not allowed to update task state');
     }

@@ -10,7 +10,7 @@ class _AppBarUnit extends StatelessWidget {
         return IconButton(
           icon: Icon(
             FontAwesomeIcons.listUl,
-            color: kGreyClr,
+            color: kWhiteClr,
           ),
           onPressed: () => Scaffold.of(context).openDrawer(),
         );
@@ -26,7 +26,7 @@ class _AppBarUnit extends StatelessWidget {
             },
             icon: Icon(
               FontAwesomeIcons.filter,
-              color: kGreyClr,
+              color: kWhiteClr,
             )),
         SizedBox(width: 20)
       ],

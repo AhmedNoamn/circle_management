@@ -22,44 +22,45 @@ part 'units/dismissible_task.dart';
 part 'units/filter_dialog.dart';
 part 'units/task_list.dart';
 
+part 'units/search_field.dart';
+
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..passCurrentUser(),
-      child: Scaffold(
-          drawer: DrawerUnit(),
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(60),
-            child: _AppBarUnit(),
-          ),
-          body: OfflineBuilder(
-            connectivityBuilder: (
-              BuildContext context,
-              ConnectivityResult connectivity,
-              Widget child,
-            ) {
-              final bool connected = connectivity != ConnectivityResult.none;
-              if (connected) {
-                return _TaskListUnit();
-              } else {
-                return ErrorMessage(
+        create: (context) => HomeCubit()..passCurrentUser(),
+        child: OfflineBuilder(
+          connectivityBuilder: (
+            BuildContext context,
+            ConnectivityResult connectivity,
+            Widget child,
+          ) {
+            final bool connected = connectivity != ConnectivityResult.none;
+            if (connected) {
+              return Scaffold(
+                drawer: DrawerUnit(),
+                appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(60),
+                  child: _AppBarUnit(),
+                ),
+                body: _TaskListUnit(),
+              );
+            } else {
+              return Scaffold(
+                body: ErrorMessage(
                   text:
                       'connection failed....\n please check internet connection ',
                   imageUrl: 'assets/images/warning.png',
-                );
-              }
-            },
-            child: SizedBox(
-              height: 300,
-              child: CircularIndicator(
-                color: kBlueClr,
-              ),
+                ),
+              );
+            }
+          },
+          child: SizedBox(
+            height: 300,
+            child: CircularIndicator(
+              color: kBlueClr,
             ),
-          )
-
-          //
           ),
-    );
+        ));
   }
 }

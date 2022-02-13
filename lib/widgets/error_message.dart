@@ -14,8 +14,8 @@ class ErrorMessage extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(height: 150),
           Image.asset(
             imageUrl,
             height: 250,

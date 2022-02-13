@@ -5,7 +5,7 @@ class AddTaskCubit extends Cubit<AddTaskState> {
 
   static AddTaskCubit of(context) => BlocProvider.of(context);
 
-  String taskCategory = '';
+  String taskCategory = 'Choose a Category';
   late String taskTitle;
   late String taskDescription;
   TextEditingController dedLineDate =
