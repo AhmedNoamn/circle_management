@@ -1,9 +1,15 @@
 part of '../view.dart';
 
+// ignore: must_be_immutable
 class _SearchField extends StatelessWidget {
-  const _SearchField({Key? key, required this.onChanged}) : super(key: key);
-  final Function(String)? onChanged;
+  _SearchField({
+    Key? key,
+    required this.onChanged,
+    required this.controller,
+  }) : super(key: key);
 
+  final Function(String?)? onChanged;
+  TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,7 +20,9 @@ class _SearchField extends StatelessWidget {
         border: Border.all(color: kBlueClr),
       ),
       child: TextFormField(
-        onChanged: onChanged,
+        textInputAction: TextInputAction.search,
+        controller: controller,
+        // onChanged: onChanged,
         style: style3.copyWith(fontWeight: FontWeight.w300),
         decoration: InputDecoration(
           hintText: 'search by category...',

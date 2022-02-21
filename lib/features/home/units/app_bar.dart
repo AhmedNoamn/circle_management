@@ -22,10 +22,10 @@ class _AppBarUnit extends StatelessWidget {
       actions: [
         IconButton(
             onPressed: () {
-              _showFilterDialog(context);
+              _showCategoryDialog();
             },
             icon: Icon(
-              FontAwesomeIcons.filter,
+              FontAwesomeIcons.clipboardList,
               color: kWhiteClr,
             )),
         SizedBox(width: 20)

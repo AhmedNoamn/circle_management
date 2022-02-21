@@ -16,8 +16,6 @@ class _StateUnit extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20),
           child: Row(
             children: [
-              //TODO:مش بيحدث اليو اى
-
               BlocBuilder(
                 bloc: cubit,
                 buildWhen: (previous, current) => previous != current,

@@ -1,18 +1,13 @@
 part of '../view.dart';
 
-//TODO:
-_showFilterDialog(BuildContext context) {
-  final cubit = HomeCubit.of(context);
+_showCategoryDialog() {
   return showDialog(
-    context: context,
-    builder: (context) => _FilterDialog(cubit),
+    context: MagicRoute.currentContext,
+    builder: (context) => _CategoryDialog(),
   );
 }
 
-class _FilterDialog extends StatelessWidget {
-  const _FilterDialog(this.cubit);
-  final HomeCubit cubit;
-
+class _CategoryDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -21,7 +16,7 @@ class _FilterDialog extends StatelessWidget {
         padding: kPadding1(15, 10),
         color: kBlueClr,
         child: Text(
-          'Types of TaskCategory',
+          'Type of Task',
           style: style2,
         ),
       ),
@@ -30,22 +25,16 @@ class _FilterDialog extends StatelessWidget {
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: categoryTaskItem.length,
-          itemBuilder: (context, index) => GestureDetector(
-            onTap: () {
-              cubit.taskSearchCategory = categoryTaskItem[index];
-              MagicRoute.pop(context);
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Icon(FontAwesomeIcons.checkSquare),
-                  Text(
-                    categoryTaskItem[index],
-                    style: style3,
-                  )
-                ],
-              ),
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Icon(FontAwesomeIcons.checkSquare),
+                Text(
+                  categoryTaskItem[index],
+                  style: style3,
+                )
+              ],
             ),
           ),
         ),

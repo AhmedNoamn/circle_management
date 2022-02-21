@@ -11,22 +11,17 @@ class ErrorMessage extends StatelessWidget {
   final String imageUrl;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        children: [
-          SizedBox(height: 150),
-          Image.asset(
-            imageUrl,
-            height: 250,
-            width: 200,
-          ),
-          Text(
-            text,
-            style: style1.copyWith(fontSize: 18),
-          ),
-        ],
-      ),
+    return ListView(
+      padding: kPadding1(70, 100),
+      children: [
+        Image.asset(
+          imageUrl,
+        ),
+        Text(
+          text,
+          style: style1.copyWith(fontSize: 18),
+        ),
+      ],
     );
   }
 }

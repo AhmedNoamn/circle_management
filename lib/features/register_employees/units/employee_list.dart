@@ -33,9 +33,12 @@ class _EmployeesListUnit extends StatelessWidget {
                         );
                       },
                       onLongPress: null,
-                      imageUrl: Image.network(
-                        _userData['userImageUrl'],
-                        fit: BoxFit.cover,
+                      imageUrl: Hero(
+                        tag: _userData['id'],
+                        child: Image.network(
+                          _userData['userImageUrl'],
+                          fit: BoxFit.cover,
+                        ),
                       ),
                       title: _userData['userName'],
                       description: _userData['jobPosition'] +

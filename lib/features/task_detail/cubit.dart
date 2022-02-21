@@ -88,8 +88,11 @@ class TaskDetailCubit extends Cubit<TaskDetailStates> {
           .collection('tasks')
           .doc(taskID)
           .update({'isTaskDone': value});
-
-      showSnackBar('task state updated successfully');
+      if (value == true) {
+        showSnackBar('task became Done ');
+      } else {
+        showSnackBar('task became Not Done ');
+      }
       MagicRoute.navigateAndReplacement(HomeView());
     } else {
       showSnackBar('not allowed to update task state');

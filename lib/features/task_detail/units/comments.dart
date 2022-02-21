@@ -30,20 +30,23 @@ class _CommentUnit extends StatelessWidget {
                         _commentData['userID'],
                       ),
                     ),
-                    leading: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Colors.transparent,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(25),
-                          child:
-                              snapshot.connectionState == ConnectionState.none
-                                  ? Image.asset(
-                                      'assets/images/man.png',
-                                    )
-                                  : Image.network(
-                                      _commentData['userImageUrl'],
-                                    ),
-                        )),
+                    leading: Hero(
+                      tag: _commentData['userID'],
+                      child: CircleAvatar(
+                          radius: 25,
+                          backgroundColor: Colors.transparent,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(25),
+                            child:
+                                snapshot.connectionState == ConnectionState.none
+                                    ? Image.asset(
+                                        'assets/images/man.png',
+                                      )
+                                    : Image.network(
+                                        _commentData['userImageUrl'],
+                                      ),
+                          )),
+                    ),
                     title: Text(
                       _commentData['userName'],
                     ),

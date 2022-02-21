@@ -43,7 +43,7 @@ class ProfileView extends StatelessWidget {
             Stack(
               children: [
                 _InfoCardUnit(),
-                _ImageUnit(),
+                _ImageUnit(userId),
               ],
             ),
           ],

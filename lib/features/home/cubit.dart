@@ -4,8 +4,8 @@ class HomeCubit extends Cubit<HomeStates> {
   HomeCubit() : super(HomeInit());
 
   static HomeCubit of(context) => BlocProvider.of(context);
+  // String taskSearchCategory = '';
 
-  String taskSearchCategory = '';
   String? currentUse;
 
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -28,16 +28,17 @@ class HomeCubit extends Cubit<HomeStates> {
     yield* _stream;
   }
 
-  Stream<QuerySnapshot> getSearchDataStream() async* {
-    var _searchStream = FirebaseFirestore.instance
-        .collection('tasks')
-        .where('taskCategory'.toLowerCase(),
-            arrayContains: taskSearchCategory.toLowerCase())
-        .orderBy('taskCreatedDate', descending: true)
-        .snapshots();
-
-    yield* _searchStream;
-  }
+  // Stream<QuerySnapshot> getSearchedDataStream() async* {
+  //   var _searchStream = FirebaseFirestore.instance
+  //       .collection('tasks')
+  //       .where(
+  //         'taskCategory'.toLowerCase(),
+  //         arrayContains: taskSearchCategory,
+  //       )
+  //       .orderBy('taskCreatedDate', descending: true)
+  //       .snapshots();
+  //   yield* _searchStream;
+  // }
 
   void deleteTask(String taskId, String userId) async {
     emit(HomeLoading());
