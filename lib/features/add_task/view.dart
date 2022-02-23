@@ -36,19 +36,31 @@ class AddTaskView extends StatelessWidget {
           preferredSize: Size.fromHeight(60),
           child: _AppBarUnit(),
         ),
-        body: ListView(
-          padding: kPadding3,
-          children: [
-            Align(
-              alignment: Alignment.topCenter,
-              child: Text(
-                'All Fields Required',
-                style: style2.copyWith(color: kRedClr),
-              ),
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: const [
+                kWhiteClr,
+                kGreyClr,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-            _FieldUnit(),
-            _ButtonUnit(),
-          ],
+          ),
+          child: ListView(
+            padding: kPadding3,
+            children: [
+              Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  'All Fields Required',
+                  style: style2.copyWith(color: kRedClr),
+                ),
+              ),
+              _FieldUnit(),
+              _ButtonUnit(),
+            ],
+          ),
         ),
       ),
     );

@@ -33,7 +33,19 @@ class RegisterEmployeeView extends StatelessWidget {
           child: _AppBarUnit(),
         ),
         body: SafeArea(
-          child: _EmployeesListUnit(),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: const [
+                  kGreyClr,
+                  kWhiteClr,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            child: _EmployeesListUnit(),
+          ),
         ),
       ),
     );

@@ -12,14 +12,17 @@ class ErrorMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: kPadding1(70, 100),
+      padding: EdgeInsets.only(top: 140, left: 0, right: 0),
       children: [
         Image.asset(
           imageUrl,
+          height: 250,
         ),
-        Text(
-          text,
-          style: style1.copyWith(fontSize: 18),
+        Center(
+          child: Text(
+            text,
+            style: style1.copyWith(fontSize: 18),
+          ),
         ),
       ],
     );

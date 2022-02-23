@@ -4,7 +4,7 @@ class _FieldUnit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = AddTaskCubit.of(context);
-    var sizeBx = SizedBox(height: 25);
+    var sizeBx = SizedBox(height: 15);
 
     return Form(
       key: cubit.formKey,

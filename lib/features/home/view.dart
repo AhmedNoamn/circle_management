@@ -44,13 +44,25 @@ class HomeView extends StatelessWidget {
                   preferredSize: Size.fromHeight(60),
                   child: _AppBarUnit(),
                 ),
-                body: _TaskListUnit(),
+                body: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: const [
+                        kWhiteClr,
+                        kGreyClr,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  child: _TaskListUnit(),
+                ),
               );
             } else {
               return Scaffold(
                 body: ErrorMessage(
                   text:
-                      'connection failed....\n please check internet connection ',
+                      'connection failed....\nplease check internet connection',
                   imageUrl: 'assets/images/warning.png',
                 ),
               );

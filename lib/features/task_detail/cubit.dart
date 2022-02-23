@@ -128,63 +128,9 @@ class TaskDetailCubit extends Cubit<TaskDetailStates> {
       });
       formKey.currentState!.reset();
     } catch (e) {
-      showSnackBar(e.toString());
+      print(e.toString());
+      // showSnackBar(e.toString());
     }
     emit(TaskDetailInit());
   }
 }
-
-
-
-/*
-  // ignore: prefer_typing_uninitialized_variables
-  late final future;
-  Future<void> getFutureData() async {
-    future =
-        await FirebaseFirestore.instance.collection('tasks').doc(taskID).get();
-
-    emit(TaskDetailInit());
-  }
-
-
-  Future<void> _getTaskDetail(String taskId) async {
-    final DocumentSnapshot? _taskData =
-        await FirebaseFirestore.instance.collection('tasks').doc(taskId).get();
-
-    if (_taskData == null) {
-      return;
-    } else {
-      taskID = _taskData.get('taskId');
-      userID = _taskData.get('taskUpLoadedBy');
-
-      isTaskDone = _taskData.get('isTaskDone');
-      taskDescription = _taskData.get('taskDescription');
-
-      upLoadedTaskDateTS = _taskData.get('taskCreatedDate');
-      var _upLoadDate = upLoadedTaskDateTS.toDate();
-      upLoadedDate =
-          '${_upLoadDate.day}/ ${_upLoadDate.month}/ ${_upLoadDate.year}';
-
-      deadLineDate = _taskData.get('deadLineDate');
-      deadLineDateTS = _taskData.get('deadLineDateTimeStamp');
-
-      var _deadLineDate = deadLineDateTS.toDate();
-      isDeadLineDateAvailable = _deadLineDate.isAfter(DateTime.now());
-    }
-  }
-
-  Future<void> _getUserDetail(String userId) async {
-    final DocumentSnapshot? _userData =
-        await FirebaseFirestore.instance.collection('users').doc(userId).get();
-
-    if (_userData == null) {
-      return;
-    } else {
-      userName = _userData.get('userName');
-      jobPosition = _userData.get('jobPosition');
-      userImageUrl = _userData.get('userImageUrl');
-    }
-  }
-*/
- 
- 

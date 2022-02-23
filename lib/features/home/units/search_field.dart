@@ -4,11 +4,9 @@ part of '../view.dart';
 class _SearchField extends StatelessWidget {
   _SearchField({
     Key? key,
-    required this.onChanged,
     required this.controller,
   }) : super(key: key);
 
-  final Function(String?)? onChanged;
   TextEditingController controller;
   @override
   Widget build(BuildContext context) {
